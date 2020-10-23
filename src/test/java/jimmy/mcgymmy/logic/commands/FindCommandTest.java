@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -133,6 +134,34 @@ public class FindCommandTest {
 
         CommandResult commandResult = command.execute(model);
         assertEquals(model.getFilteredFoodList(), expectedModel.getFilteredFoodList());
+
+        String msg = commandResult.getFeedbackToUser();
+
+        System.out.println("exp:" + expectedMessage);
+        System.out.println("act:" + msg);
+
+        Consumer<Integer> test = t -> assertEquals(expectedMessage.charAt(t), msg.charAt(t));
+
+        test.accept(0);
+        test.accept(1);
+        test.accept(2);
+        test.accept(3);
+        test.accept(4);
+        test.accept(5);
+        test.accept(6);
+        test.accept(7);
+        test.accept(8);
+        test.accept(9);
+        test.accept(10);
+        test.accept(11);
+        test.accept(12);
+        test.accept(13);
+        test.accept(14);
+        test.accept(15);
+        test.accept(16);
+        test.accept(17);
+        test.accept(18);
+        test.accept(19);
 
         assertEquals(commandResult.getFeedbackToUser(), expectedMessage);
         assertEquals(new CommandResult(expectedMessage), commandResult);
