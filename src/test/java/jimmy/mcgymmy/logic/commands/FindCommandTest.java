@@ -134,6 +134,7 @@ public class FindCommandTest {
         CommandResult commandResult = command.execute(model);
         assertEquals(model.getFilteredFoodList(), expectedModel.getFilteredFoodList());
 
+        assertEquals(commandResult.getFeedbackToUser(), expectedMessage);
         assertEquals(new CommandResult(expectedMessage), commandResult);
         assertEquals(expectedModel, model);
 
