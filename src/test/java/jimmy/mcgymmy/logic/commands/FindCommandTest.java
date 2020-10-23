@@ -27,6 +27,8 @@ import jimmy.mcgymmy.model.Model;
 import jimmy.mcgymmy.model.ModelManager;
 import jimmy.mcgymmy.model.UserPrefs;
 import jimmy.mcgymmy.model.food.Food;
+import jimmy.mcgymmy.model.food.Name;
+import jimmy.mcgymmy.testutil.FoodBuilder;
 import jimmy.mcgymmy.testutil.TypicalFoods;
 
 /**
@@ -137,9 +139,22 @@ public class FindCommandTest {
 
         String msg = commandResult.getFeedbackToUser();
 
-        assertTrue(tagPredicate.test(CHICKEN_RICE));
-        assertTrue(tagPredicate.test(NASI_LEMAK));
-        assertTrue(tagPredicate.test(DANISH_COOKIES));
+        Food cr = new FoodBuilder().withName(new Name("Chicken Rice"))
+                .withProtein("94351253").withFat("123")
+                .withCarb("456").withDate("20 Apr 2020")
+                .withTags("lunch").build();
+        Food nl = new FoodBuilder().withName(new Name("Nasi Alamak"))
+                .withProtein("98765432").withFat("321")
+                .withCarb("123").withDate("2 Sep 2020")
+                .withTags("dinner", "lunch").build();
+        Food dc = new FoodBuilder().withName(new Name("Danish Cookies"))
+                .withProtein("87652533").withFat("654")
+                .withCarb("456").withDate("1 Jan 2020")
+                .withTags("lunch").build();
+
+        assertTrue(tagPredicate.test(cr));
+        assertTrue(tagPredicate.test(nl));
+        assertTrue(tagPredicate.test(dc));
 
         ArrayList<Food> arrayList = new ArrayList<>(model.getFilteredFoodList());
         assertEquals(Arrays.asList(CHICKEN_RICE, NASI_LEMAK, DANISH_COOKIES), arrayList);
