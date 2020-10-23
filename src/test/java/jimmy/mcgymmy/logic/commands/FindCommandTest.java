@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -140,28 +139,26 @@ public class FindCommandTest {
         System.out.println("exp:" + expectedMessage);
         System.out.println("act:" + msg);
 
-        Consumer<Integer> test = t -> assertEquals(expectedMessage.charAt(t), msg.charAt(t));
-
-        test.accept(0);
-        test.accept(1);
-        test.accept(2);
-        test.accept(3);
-        test.accept(4);
-        test.accept(5);
-        test.accept(6);
-        test.accept(7);
-        test.accept(8);
-        test.accept(9);
-        test.accept(10);
-        test.accept(11);
-        test.accept(12);
-        test.accept(13);
-        test.accept(14);
-        test.accept(15);
-        test.accept(16);
-        test.accept(17);
-        test.accept(18);
-        test.accept(19);
+        assertEquals(expectedMessage.charAt(0), msg.charAt(0));
+        assertEquals(expectedMessage.charAt(1), msg.charAt(1));
+        assertEquals(expectedMessage.charAt(2), msg.charAt(2));
+        assertEquals(expectedMessage.charAt(3), msg.charAt(3));
+        assertEquals(expectedMessage.charAt(4), msg.charAt(4));
+        assertEquals(expectedMessage.charAt(5), msg.charAt(5));
+        assertEquals(expectedMessage.charAt(6), msg.charAt(6));
+        assertEquals(expectedMessage.charAt(7), msg.charAt(7));
+        assertEquals(expectedMessage.charAt(8), msg.charAt(8));
+        assertEquals(expectedMessage.charAt(9), msg.charAt(9));
+        assertEquals(expectedMessage.charAt(10), msg.charAt(10));
+        assertEquals(expectedMessage.charAt(11), msg.charAt(11));
+        assertEquals(expectedMessage.charAt(12), msg.charAt(12));
+        assertEquals(expectedMessage.charAt(13), msg.charAt(13));
+        assertEquals(expectedMessage.charAt(14), msg.charAt(14));
+        assertEquals(expectedMessage.charAt(15), msg.charAt(15));
+        assertEquals(expectedMessage.charAt(16), msg.charAt(16));
+        assertEquals(expectedMessage.charAt(17), msg.charAt(17));
+        assertEquals(expectedMessage.charAt(18), msg.charAt(18));
+        assertEquals(expectedMessage.charAt(19), msg.charAt(19));
 
         assertEquals(commandResult.getFeedbackToUser(), expectedMessage);
         assertEquals(new CommandResult(expectedMessage), commandResult);
