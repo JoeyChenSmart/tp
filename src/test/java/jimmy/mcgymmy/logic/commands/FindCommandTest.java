@@ -136,8 +136,8 @@ public class FindCommandTest {
 
         String msg = commandResult.getFeedbackToUser();
 
-        System.out.println("exp:" + expectedMessage);
-        System.out.println("act:" + msg);
+        ArrayList<Food> arrayList = new ArrayList<>(model.getFilteredFoodList());
+        assertEquals(Arrays.asList(CHICKEN_RICE, NASI_LEMAK, DANISH_COOKIES), arrayList);
 
         assertEquals(expectedMessage.charAt(1), msg.charAt(1));
         assertEquals(expectedMessage.charAt(2), msg.charAt(2));
@@ -174,7 +174,5 @@ public class FindCommandTest {
         assertEquals(expectedModel, model);
 
         //CommandTestUtil.assertCommandSuccess(command, model, expectedMessage, expectedModel);
-        ArrayList<Food> arrayList = new ArrayList<>(model.getFilteredFoodList());
-        assertEquals(Arrays.asList(CHICKEN_RICE, NASI_LEMAK, DANISH_COOKIES), arrayList);
     }
 }
