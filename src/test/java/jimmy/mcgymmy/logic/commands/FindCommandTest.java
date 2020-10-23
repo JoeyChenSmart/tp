@@ -132,14 +132,12 @@ public class FindCommandTest {
         expectedModel.updateFilteredFoodList(tagPredicate);
 
         CommandResult commandResult = command.execute(model);
-        assertEquals(model.getFilteredFoodList(), expectedModel.getFilteredFoodList());
 
         String msg = commandResult.getFeedbackToUser();
 
         System.out.println("exp:" + expectedMessage);
         System.out.println("act:" + msg);
 
-        assertEquals(expectedMessage.charAt(0), msg.charAt(0));
         assertEquals(expectedMessage.charAt(1), msg.charAt(1));
         assertEquals(expectedMessage.charAt(2), msg.charAt(2));
         assertEquals(expectedMessage.charAt(3), msg.charAt(3));
@@ -159,6 +157,10 @@ public class FindCommandTest {
         assertEquals(expectedMessage.charAt(17), msg.charAt(17));
         assertEquals(expectedMessage.charAt(18), msg.charAt(18));
         assertEquals(expectedMessage.charAt(19), msg.charAt(19));
+
+        assertEquals(model.getFilteredFoodList().size(), expectedModel.getFilteredFoodList().size());
+        assertEquals(model.getFilteredFoodList().size(), 3);
+
 
         assertEquals(commandResult.getFeedbackToUser(), expectedMessage);
         assertEquals(new CommandResult(expectedMessage), commandResult);
